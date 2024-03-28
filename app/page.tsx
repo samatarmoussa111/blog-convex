@@ -5,7 +5,7 @@ import { ArrowRight } from "lucide-react";
 export default function Home() {
   return (
     <div>
-      <Typography variant="h1" className="mb-5">
+      <Typography variant="h1" className="mb-6">
         Ne jamais compter sur les autres
       </Typography>
       <Typography>
