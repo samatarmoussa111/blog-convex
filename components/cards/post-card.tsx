@@ -7,7 +7,7 @@ const PostCard = () => {
       className=" w-full flex justify-between items-center duration-300 md:hover:bg-muted-foreground/10 md:p-4 rounded-lg cursor-pointer"
     >
       <div className="flex flex-col space-y-2">
-        <span className="text-foreground/90">
+        <span className="text-foreground/85">
           Ne jamais compter sur les autres
         </span>
 
