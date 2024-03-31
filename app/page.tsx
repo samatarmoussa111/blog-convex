@@ -1,10 +1,20 @@
+"use client";
+
 import PostCard from "@/components/cards/post-card";
 import ReadCard from "@/components/cards/read-card";
 import Header from "@/components/header/header";
 import { ModeToggle } from "@/components/theme/mode-toggle";
+import { api } from "@/convex/_generated/api";
+import { useQuery } from "convex/react";
 import Link from "next/link";
 
 export default function Home() {
+  const posts = useQuery(api.posts.get3LatestPosts);
+
+  if (posts === undefined) {
+    return null;
+  }
+
   return (
     <>
       <ModeToggle />
@@ -12,7 +22,7 @@ export default function Home() {
       <div className="flex flex-col space-y-6 md:space-y-10 pb-10">
         <div className="flex flex-col  md:px-6">
           <div className="flex flex-col space-y-2">
-            <span className="font-semibold">About me</span>
+            <span className="font-semibold">À propos de l&apos;auteur</span>
             <span className="text-foreground/85 leading-7">
               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
               Reprehenderit officiis ipsa cum dicta rem perferendis sunt. Ad
@@ -24,17 +34,17 @@ export default function Home() {
         <div className="flex flex-col space-y-6">
           {/* Posts */}
           <div className="flex flex-col space-y-2">
-            <span className="font-semibold md:px-6">Recent Posts</span>
+            <span className="font-semibold md:px-6">Articles récents</span>
             <div className="flex flex-col space-y-8 md:space-y-1 md:px-2">
-              <PostCard />
-              <PostCard />
-              <PostCard />
+              {posts.map((post) => (
+                <PostCard key={post._id} post={post} />
+              ))}
             </div>
             <Link
               href="/posts"
               className="flex flex-row space-x-2 items-center md:px-6 group cursor-pointer justify-end"
             >
-              <span className="text-sm">All Posts</span>
+              <span className="text-sm">Tous les articles</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -53,7 +63,7 @@ export default function Home() {
           </div>
           {/* reads */}
           <div className="flex flex-col space-y-2">
-            <span className="font-semibold md:px-6">Recent reads</span>
+            <span className="font-semibold md:px-6">Lecture récente</span>
             <div className="flex flex-col space-y-8 md:space-y-1 md:px-2">
               <ReadCard />
               <ReadCard />
@@ -63,7 +73,7 @@ export default function Home() {
               href="/posts"
               className="flex flex-row space-x-2 items-center md:px-6 group cursor-pointer justify-end"
             >
-              <span className="text-sm">Books I&apos;ve Read</span>
+              <span className="text-sm">Livres que j&apos;ai lus</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
