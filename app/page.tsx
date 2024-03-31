@@ -3,6 +3,7 @@
 import PostCard from "@/components/cards/post-card";
 import ReadCard from "@/components/cards/read-card";
 import Header from "@/components/header/header";
+import Starts from "@/components/starts/starts";
 import { ModeToggle } from "@/components/theme/mode-toggle";
 import { api } from "@/convex/_generated/api";
 import { useQuery } from "convex/react";
@@ -17,17 +18,15 @@ export default function Home() {
 
   return (
     <>
-      <ModeToggle />
       <Header />
-      <div className="flex flex-col space-y-6 md:space-y-10 pb-10">
+      <div className="flex flex-col space-y-6 md:space-y-10 mt-8 pb-10">
         <div className="flex flex-col  md:px-6">
           <div className="flex flex-col space-y-2">
-            <span className="font-semibold">À propos de l&apos;auteur</span>
+            <span className="font-semibold ">À propos de l&apos;auteur</span>
             <span className="text-foreground/85 leading-7">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              Lorem ipsum dolor sit, amet consectetur adipisicing Reprehenderit
               Reprehenderit officiis ipsa cum dicta rem perferendis sunt. Ad
-              harum eligendi temporibus aliquid sapiente incidunt excepturi. Quo
-              voluptate iusto dolore ullam vitae!
+              Reprehenderit
             </span>
           </div>
         </div>
