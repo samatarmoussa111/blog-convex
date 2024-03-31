@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import MaxWidthWrapper from "@/components/max-width-wrapper/max-width-wrapper";
+import ConvexClientProvider from "@/components/providers/convex-client-provider";
 
 const poppins = Poppins({ weight: "400", subsets: ["latin"] });
 
@@ -23,7 +24,7 @@ export default function RootLayout({
           <main className="min-h-screen flex flex-col items-center">
             <MaxWidthWrapper>
               <div className="flex-1 w-full flex flex-col gap-8 items-center">
-                {children}
+                <ConvexClientProvider>{children}</ConvexClientProvider>
               </div>
             </MaxWidthWrapper>
           </main>
