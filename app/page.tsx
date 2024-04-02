@@ -18,12 +18,13 @@ export default function Home() {
 
   return (
     <>
+      <ModeToggle />
       <Header />
       <div className="flex flex-col space-y-6 md:space-y-10 mt-8 pb-10">
         <div className="flex flex-col  md:px-6">
           <div className="flex flex-col space-y-2">
             <span className="font-semibold ">À propos de l&apos;auteur</span>
-            <span className="text-foreground/85 leading-7">
+            <span className="text-foreground/90 leading-7">
               Lorem ipsum dolor sit, amet consectetur adipisicing Reprehenderit
               Reprehenderit officiis ipsa cum dicta rem perferendis sunt. Ad
               Reprehenderit
@@ -36,7 +37,11 @@ export default function Home() {
             <span className="font-semibold md:px-6">Articles récents</span>
             <div className="flex flex-col space-y-8 md:space-y-1 md:px-2">
               {posts.map((post) => (
-                <PostCard key={post._id} post={post} />
+                <PostCard
+                  key={post._id}
+                  post={post}
+                  href={`/posts/${post.slug}`}
+                />
               ))}
             </div>
             <Link

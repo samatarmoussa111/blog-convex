@@ -1,21 +1,23 @@
 import { Doc } from "@/convex/_generated/dataModel";
+import { formatDate } from "@/lib/utils";
 import Link from "next/link";
 
 interface Props {
   post: Doc<"posts">;
+  href: string;
 }
 
-const PostCard = ({ post }: Props) => {
+const PostCard = ({ post, href }: Props) => {
   return (
     <Link
-      href={`#`}
+      href={href}
       className=" w-full flex justify-between items-center duration-300 md:hover:bg-muted-foreground/10 md:p-4 rounded-lg cursor-pointer"
     >
       <div className="flex flex-col space-y-2">
-        <span className="text-foreground/85">{post.title}</span>
+        <span className="text-foreground/90">{post.title}</span>
 
         <div className="flex flex-row space-x-2 items-center text-sm text-muted-foreground">
-          <span> {new Date(post._creationTime).toLocaleDateString()} </span>
+          <span> {formatDate(new Date(post._creationTime))} </span>
           <span className="h-1 w-1 bg-muted-foreground rounded-full" />
           <span>
             <span>
