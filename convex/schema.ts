@@ -13,15 +13,17 @@ export default defineSchema({
       v.union(
         v.literal("technologie"),
         v.literal("entreprenariat"),
-        v.literal("business"),
-        v.literal("sport"),
         v.literal("education"),
-        v.literal("finance"),
-        v.literal("lifestyle"),
-        v.literal("politique"),
         v.literal("santé"),
         v.literal("voyage")
       )
     ),
+  }),
+  books: defineTable({
+    title: v.string(),
+    author: v.string(),
+    finished_time: v.string(),
+    rating: v.number(),
+    affliate_link: v.string(),
   }),
 });

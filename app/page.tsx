@@ -11,8 +11,12 @@ import Link from "next/link";
 
 export default function Home() {
   const posts = useQuery(api.posts.get3LatestPosts);
+  const books = useQuery(api.books.get3LatestBooks);
 
   if (posts === undefined) {
+    return null;
+  }
+  if (books === undefined) {
     return null;
   }
 
@@ -69,12 +73,12 @@ export default function Home() {
           <div className="flex flex-col space-y-2">
             <span className="font-semibold md:px-6">Lecture récente</span>
             <div className="flex flex-col space-y-8 md:space-y-1 md:px-2">
-              <ReadCard />
-              <ReadCard />
-              <ReadCard />
+              {books.map((book) => (
+                <ReadCard key={book._id} book={book} />
+              ))}
             </div>
             <Link
-              href="/posts"
+              href="/reading"
               className="flex flex-row space-x-2 items-center md:px-6 group cursor-pointer justify-end"
             >
               <span className="text-sm">Livres que j&apos;ai lus</span>

@@ -1,19 +1,28 @@
+import { Doc } from "@/convex/_generated/dataModel";
+import { formatBookDate } from "@/lib/utils";
 import Link from "next/link";
 
-const ReadCard = () => {
+interface Props {
+  book: Doc<"books">;
+}
+
+const ReadCard = ({ book }: Props) => {
   return (
     <Link
-      href={`#`}
+      href={book.affliate_link}
+      target="_blank"
       className=" w-full flex justify-between items-center duration-300 md:hover:bg-muted-foreground/10 md:p-4 rounded-lg cursor-pointer"
     >
       <div className="flex flex-col space-y-2">
-        <span className="text-foreground/85">
-          48 laws of power{" "}
-          <span className="text-muted-foreground">by Robert Green</span>
+        <span className="text-foreground/90">
+          {book.title}
+          <span className="text-muted-foreground"> by {book.author}</span>
         </span>
 
         <div className="flex flex-row space-x-2 items-center text-sm text-muted-foreground">
-          <span className="text-muted-foreground">Finished: Mar 7, 2024</span>
+          <span className="text-muted-foreground">
+            Fini le: {formatBookDate(book.finished_time)}{" "}
+          </span>
         </div>
       </div>
 
