@@ -1,5 +1,7 @@
+import { api } from "@/convex/_generated/api";
 import { Doc } from "@/convex/_generated/dataModel";
 import { formatDate } from "@/lib/utils";
+import { useMutation } from "convex/react";
 import Link from "next/link";
 
 interface Props {
@@ -8,8 +10,14 @@ interface Props {
 }
 
 const PostCard = ({ post, href }: Props) => {
+  const incrementViews = useMutation(api.posts.incrementViews);
+  const increment = async () => {
+    await incrementViews({ postId: post._id });
+  };
+
   return (
     <Link
+      onClick={increment}
       href={href}
       className=" w-full flex justify-between items-center duration-300 md:hover:bg-muted-foreground/10 md:p-4 rounded-lg cursor-pointer"
     >

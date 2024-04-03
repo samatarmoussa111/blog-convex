@@ -1,4 +1,5 @@
-import { query } from "./_generated/server";
+import { v } from "convex/values";
+import { mutation, query } from "./_generated/server";
 
 export const getPosts = query({
   args: {},
@@ -25,5 +26,20 @@ export const getPublishedPosts = query({
       .query("posts")
       .filter((q) => q.eq(q.field("isPublished"), true))
       .collect();
+  },
+});
+
+export const incrementViews = mutation({
+  args: {
+    postId: v.id("posts"),
+  },
+  handler: async (ctx, { postId }) => {
+    const post = await ctx.db.get(postId);
+    if (post) {
+      await ctx.db.replace(postId, {
+        ...post,
+        views: post.views + 1,
+      });
+    }
   },
 });
