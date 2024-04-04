@@ -1,5 +1,7 @@
 "use client";
 
+import Maths from "@/components/maths/maths";
+import Typography from "@/components/ui/typography";
 import { api } from "@/convex/_generated/api";
 import { formatDate } from "@/lib/utils";
 import { useQuery } from "convex/react";
@@ -40,9 +42,7 @@ export default function PostIdPage({ params }: Props) {
           Plus d&apos;articles
         </Link>
       </div>
-      <h1 className="title font-medium text-2xl tracking-tighter max-w-[650px]">
-        {post.title}
-      </h1>
+      <Typography variant="h2">{post.title}</Typography>
       <div className="flex justify-between items-center mt-2 mb-8 text-sm max-w-[650px]">
         <div className="flex flex-row space-x-2 items-center text-muted-foreground">
           <span>{formatDate(new Date(post._creationTime))}</span>
@@ -60,8 +60,7 @@ export default function PostIdPage({ params }: Props) {
         </div>
       </div>
       <article className="prose prose-invert pb-10">
-        {/** Maths component */}
-        {post.content}
+        <Maths input={post.content} />
       </article>
     </div>
   );

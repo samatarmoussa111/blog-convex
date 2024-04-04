@@ -37,7 +37,7 @@ export default function Home() {
         </div>
         <div className="flex flex-col space-y-6">
           {/* Posts */}
-          <div className="flex flex-col space-y-2">
+          <div className="flex flex-col space-y-2 ">
             <span className="font-semibold md:px-6">Articles récents</span>
             <div className="flex flex-col space-y-8 md:space-y-1 md:px-2">
               {posts.map((post) => (
