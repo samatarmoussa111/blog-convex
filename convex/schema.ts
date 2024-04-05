@@ -19,6 +19,16 @@ export default defineSchema({
       )
     ),
   }),
+  comments: defineTable({
+    content: v.string(),
+    postId: v.id("posts"),
+    userId: v.id("users"),
+  }).index("by_post", ["postId"]),
+  users: defineTable({
+    name: v.string(),
+    email: v.string(),
+    tokenIdentifier: v.string(),
+  }).index("by_token", ["tokenIdentifier"]),
   books: defineTable({
     title: v.string(),
     author: v.string(),

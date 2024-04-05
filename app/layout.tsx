@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Poppins, Space_Grotesk } from "next/font/google";
+import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import MaxWidthWrapper from "@/components/max-width-wrapper/max-width-wrapper";
-import ConvexClientProvider from "@/components/providers/convex-client-provider";
+import { ConvexClientProvider } from "@/components/providers/convex-client-provider";
 
 const poppins = Space_Grotesk({ weight: "400", subsets: ["latin"] });
 
