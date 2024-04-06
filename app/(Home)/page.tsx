@@ -3,7 +3,6 @@
 import PostCard from "@/components/cards/post-card";
 import ReadCard from "@/components/cards/read-card";
 import Header from "@/components/header/header";
-import Starts from "@/components/starts/starts";
 import { ModeToggle } from "@/components/theme/mode-toggle";
 import { Button } from "@/components/ui/button";
 import { api } from "@/convex/_generated/api";
@@ -24,8 +23,10 @@ export default function Home() {
 
   return (
     <>
-      <ModeToggle />
-
+      {/**
+       * TODO: Add Footer to the HomeLayout!!!!!!!!!!!!!
+       *  <ModeToggle />
+      <UserButton afterSignOutUrl="/" /> */}
       <Header />
       <div className="flex flex-col space-y-6 md:space-y-10 mt-8 pb-10">
         <div className="flex flex-col  md:px-6">

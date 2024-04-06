@@ -8,5 +8,5 @@ export default function HomeLayout({
   children: React.ReactNode;
 }>) {
   const userId = useStoreUserEffect();
-  return <>{children}</>;
+  return <div>{children}</div>;
 }

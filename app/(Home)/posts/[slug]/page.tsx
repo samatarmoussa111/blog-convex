@@ -1,5 +1,7 @@
 "use client";
 
+import CommentsCard from "@/components/cards/comments-card";
+import { CommentForm } from "@/components/form/comment-form";
 import Maths from "@/components/maths/maths";
 import Typography from "@/components/ui/typography";
 import { api } from "@/convex/_generated/api";
@@ -16,8 +18,14 @@ interface Props {
 
 export default function PostIdPage({ params }: Props) {
   const posts = useQuery(api.posts.getPublishedPosts);
+  const comments = useQuery(api.comments.getCommentsByPosts, {
+    id: posts?.find((post) => post.slug === params.slug)?._id as any,
+  });
 
   if (posts === undefined) {
+    return null;
+  }
+  if (comments === undefined) {
     return null;
   }
   const post = posts.find((post) => post.slug === params.slug);
@@ -52,6 +60,11 @@ export default function PostIdPage({ params }: Props) {
           </span>
           <span className="h-1 w-1 bg-muted-foreground rounded-full" />
           <span>
+            {comments.length} commentaire{comments.length > 1 && "s"}
+          </span>
+          <span className="h-1 w-1 bg-muted-foreground rounded-full" />
+
+          <span>
             <span>
               {post.reading_time}
               {" min de lecture"}
@@ -62,6 +75,15 @@ export default function PostIdPage({ params }: Props) {
       <article className="prose prose-invert pb-10">
         <Maths input={post.content} />
       </article>
+      <div className="">
+        <CommentForm post={post} />
+      </div>
+      <div className=" mt-20 flex flex-col space-y-4">
+        {comments?.length > 0 &&
+          comments?.map((comment) => (
+            <CommentsCard key={comment._id} comment={comment} />
+          ))}
+      </div>
     </div>
   );
 }

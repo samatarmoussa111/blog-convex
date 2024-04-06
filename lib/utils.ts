@@ -47,3 +47,31 @@ export function formatBookDate(dateString: string) {
 
   return `${jour} ${moisTexte} ${annee}`;
 }
+
+export function capitalizeFirstLetter(str: string | undefined) {
+  if (typeof str !== "string" || str.length === 0) {
+    return "";
+  }
+
+  return str.charAt(0).toUpperCase();
+}
+
+export function formatDateWithHours(date: Date) {
+  const options = {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+  } as any;
+  return date.toLocaleDateString("fr-FR", options);
+}
+
+export function initials(str: string | undefined) {
+  if (typeof str !== "string" || str.length === 0) {
+    return "??";
+  }
+  const words = str.split(" ");
+  const initialsArray = words.map((word) => word.charAt(0).toUpperCase());
+  return initialsArray.join("");
+}
