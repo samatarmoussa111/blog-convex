@@ -33,9 +33,13 @@ export default function Home() {
           <div className="flex flex-col space-y-2">
             <span className="font-semibold ">À propos de l&apos;auteur</span>
             <span className="text-foreground/90 leading-7">
-              Lorem ipsum dolor sit, amet consectetur adipisicing Reprehenderit
-              Reprehenderit officiis ipsa cum dicta rem perferendis sunt. Ad
-              Reprehenderit
+              Diplômé d&apos;un Master 2 en mathématiques fondamentales à
+              l&apos;Université de Besançon, j&apos;ai enseigné les
+              mathématiques à l&apos;Université de Djibouti, à l&apos;Université
+              de EMD, et aux classes préparatoires aux grandes écoles (CPGE) du
+              Lycée d&apos;Excellence à Djibouti. Actuellement je suis
+              développeur d&apos;applications TypeScript & React.js aux
+              États-Unis.
             </span>
           </div>
         </div>
@@ -101,6 +105,47 @@ export default function Home() {
                 />
               </svg>
             </Link>
+          </div>
+          {/* mes travaux de recherches */}
+          <div className="flex flex-col space-y-4">
+            <span className="font-semibold md:px-6">
+              Mes travaux de recherches
+            </span>
+            <div className="flex flex-col space-y-8 md:space-y-2 md:px-2">
+              <div className="md:px-4">
+                <p className="text-foreground/90">
+                  Sur le corps des fonctions algébriques.{" "}
+                  <Link
+                    target="_blank"
+                    href={`${process.env.NEXT_PUBLIC_CONVEX_URL}/api/storage/d5f5d647-8d7c-4a31-8f22-072c909c9f93`}
+                    className="underline text-primary"
+                  >
+                    pdf
+                  </Link>
+                </p>
+              </div>
+              <div className="md:px-4">
+                <p className="text-foreground/90 ">
+                  Sur la correspondance de Galois infini et groupes
+                  topologiques.{" "}
+                  <Link href="#" className="underline text-primary">
+                    pdf
+                  </Link>
+                </p>
+              </div>
+              <div className="md:px-4 ">
+                <p className="text-foreground/90">
+                  Sur le dernier théorème de Fermat (courbes elliptiques).{" "}
+                  <Link
+                    target="_blank"
+                    href={`${process.env.NEXT_PUBLIC_CONVEX_URL}/api/storage/eb636423-a181-444c-b819-0d543f2c42bd`}
+                    className="underline text-primary"
+                  >
+                    pdf
+                  </Link>
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

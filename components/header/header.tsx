@@ -1,7 +1,7 @@
 import React from "react";
 
 import Image from "next/image";
-import { Facebook, Github, Linkedin, Youtube } from "lucide-react";
+import { Github, Linkedin, Twitter, Youtube } from "lucide-react";
 
 const socialBorder = `border group hover:border-muted-foreground duration-200 rounded px-1.5 py-1 border-border items-center flex`;
 
@@ -19,7 +19,7 @@ export default function Header() {
         <div className="flex flex-col">
           <span className="font-semibold">Samatar Moussa Barkadleh</span>
           <span className="text-muted-foreground ">
-            Full-stack Next.js Developer
+            Mathématicien &amp; Développeur Web
           </span>
         </div>
       </div>
@@ -34,7 +34,7 @@ export default function Header() {
           <Github className="h-5 w-5 text-muted-foreground" />
         </a>
         <a href="#" target="_blank" className={`${socialBorder}`}>
-          <Facebook className="h-5 w-5 text-muted-foreground" />
+          <Twitter className="h-5 w-5 text-muted-foreground" />
         </a>
       </div>
     </header>
