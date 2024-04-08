@@ -1,6 +1,7 @@
 "use client";
 
 import PostCard from "@/components/cards/post-card";
+import ProjectsCard from "@/components/cards/projects-card";
 import ReadCard from "@/components/cards/read-card";
 import Header from "@/components/header/header";
 import { ModeToggle } from "@/components/theme/mode-toggle";
@@ -8,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { api } from "@/convex/_generated/api";
 import { SignInButton, SignOutButton, UserButton } from "@clerk/clerk-react";
 import { useQuery } from "convex/react";
+import { CodeXml, GitBranch, LucideIcon, SquareSigma } from "lucide-react";
 import Link from "next/link";
 
 export default function Home() {
@@ -44,6 +46,21 @@ export default function Home() {
           </div>
         </div>
         <div className="flex flex-col space-y-6">
+          {/* Featured Projects */}
+          <div className="flex flex-col space-y-2 ">
+            <span className="font-semibold md:px-6">Ce que j&apos;ai codé</span>
+            <div className="flex flex-col space-y-8 md:space-y-1 md:px-2">
+              {PROJECTS.map((project) => (
+                <ProjectsCard
+                  key={project.id}
+                  title={project.title}
+                  description={project.description}
+                  url={project.url}
+                  iconName={project.iconName}
+                />
+              ))}
+            </div>
+          </div>
           {/* Posts */}
           <div className="flex flex-col space-y-2 ">
             <span className="font-semibold md:px-6">Articles récents</span>
@@ -152,3 +169,37 @@ export default function Home() {
     </>
   );
 }
+
+type Project = {
+  id: number;
+  title: string;
+  description: string;
+  url: string;
+  iconName?: LucideIcon;
+  image?: string;
+};
+
+const PROJECTS: Project[] = [
+  {
+    id: 1,
+    title: "Remote Monkey",
+    description:
+      "Plateforme de partage de projets entre développeurs indépendants. Les freelances peuvent partager leurs projets pour montrer leur créativité mais aussi pour s'inspirer des projets des autres",
+    url: "https://codeurs-monkeys.web.app/",
+    iconName: CodeXml,
+  },
+  {
+    id: 2,
+    title: "TeachMathOnline",
+    description: `Plateforme d'apprentissage des mathématiques où les enseignants peuvent créer leur cours et gérer leurs élèves.`,
+    url: "https://example.com/project2",
+    iconName: SquareSigma,
+  },
+  {
+    id: 3,
+    title: "Notion Clone",
+    description: `Un clone de l'application Notion avec une base de données en temps réel (Convex), un éditeur de style de notion approprié, des images de couverture, des documents imbriqués, la publication de documents au public et plus encore.`,
+    url: "https://github.com/samatarmoussa111/notion-clone",
+    iconName: GitBranch,
+  },
+];
