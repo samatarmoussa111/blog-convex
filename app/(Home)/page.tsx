@@ -106,7 +106,7 @@ export default function Home() {
               </svg>
             </Link>
           </div>
-          {/* mes travaux de recherches */}
+          {/* mes travaux de recherche */}
           <div className="flex flex-col space-y-4">
             <span className="font-semibold md:px-6">
               Mes travaux de recherches
