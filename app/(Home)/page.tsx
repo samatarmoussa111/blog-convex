@@ -29,11 +29,12 @@ export default function Home() {
        * TODO: Add Footer to the HomeLayout!!!!!!!!!!!!!
        *  <ModeToggle />
       <UserButton afterSignOutUrl="/" /> */}
+      <ModeToggle />
       <Header />
       <div className="flex flex-col space-y-6 md:space-y-10 mt-8 pb-10">
         <div className="flex flex-col  md:px-6">
           <div className="flex flex-col space-y-2">
-            <span className="font-semibold ">À propos de l&apos;auteur</span>
+            <span className="font-semibold ">À propos de moi</span>
             <span className="text-foreground/90 leading-7">
               Diplômé d&apos;un Master 2 en mathématiques fondamentales à
               l&apos;Université de Besançon, j&apos;ai enseigné les
