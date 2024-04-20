@@ -1,12 +1,13 @@
 "use client";
 
 import SyntaxHighlighter from "react-syntax-highlighter";
-import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { ocean } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
 import Typography from "../ui/typography";
+import { Badge } from "../ui/badge";
 
 interface Props {
   input: string;
@@ -21,20 +22,25 @@ const Maths = ({ input, className }: Props) => {
       className={className}
       components={{
         code(props) {
-          const { children, className, node, ...rest } = props;
+          const { children, className, ...rest } = props;
           const match = /language-(\w+)/.exec(className || "");
           return match ? (
             <SyntaxHighlighter
               {...rest}
               PreTag="div"
               language={match[1]}
-              style={docco}
+              style={ocean}
+              customStyle={{
+                marginTop: "1rem",
+                padding: "1rem",
+                borderRadius: "calc(var(--radius) - 2px",
+              }}
             >
               {children}
             </SyntaxHighlighter>
           ) : (
             <code {...rest} className={className}>
-              {children}
+              <Badge variant="outline">{children}</Badge>
             </code>
           );
         },
@@ -57,7 +63,7 @@ const Maths = ({ input, className }: Props) => {
         },
         h4(props) {
           return (
-            <Typography variant="h4" className="my-2">
+            <Typography variant="h4" className="mb-2 mt-12">
               {props.children}
             </Typography>
           );

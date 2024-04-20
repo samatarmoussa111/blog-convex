@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import MaxWidthWrapper from "@/components/max-width-wrapper/max-width-wrapper";
 import { ConvexClientProvider } from "@/components/providers/convex-client-provider";
+import "katex/dist/katex.min.css";
 
 const poppins = Space_Grotesk({ weight: "400", subsets: ["latin"] });
 

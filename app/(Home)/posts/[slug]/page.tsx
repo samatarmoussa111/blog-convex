@@ -72,7 +72,7 @@ export default function PostIdPage({ params }: Props) {
           </span>
         </div>
       </div>
-      <article className="prose prose-invert pb-10">
+      <article className="prose prose-invert max-w-3xl mx-auto pb-10">
         <Maths input={post.content} />
       </article>
       <div className="">
